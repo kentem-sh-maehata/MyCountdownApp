@@ -1,10 +1,11 @@
 {
   const btn = document.getElementById('btn')
+  // const btn = document.getElementById('btn') as HTMLInputElement
   const p = document.querySelector('p')
 
   btn?.addEventListener('click',()=>{
     if(p?.textContent) p.textContent = "00:03"
-    btn.disabled = true
+    if("disabled" in btn) btn.disabled = true
     btn.classList.add('enabled')
     const endTime:number = new Date().getTime() + 3000
     
@@ -21,7 +22,7 @@
         if(p?.textContent) p.textContent = "00:00"
         clearInterval(setinterval)
         btn.classList.remove('enabled')
-        btn.disabled = false
+        if("disabled" in btn) btn.disabled = false
       }
     },100)
   })
